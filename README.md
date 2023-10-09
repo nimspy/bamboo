@@ -1,5 +1,7 @@
 # bamboo
-UserScripts for filling hours on timesheet
+UserScripts for filling hours on timesheet.
+
+This script fills the remaining hours in a month. It takes into account vacation and sick leave.
 
 ### Instalation
 You must install Tampermonkey for your browser. You can find it [here](https://www.tampermonkey.net/).
