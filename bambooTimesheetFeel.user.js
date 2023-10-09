@@ -6,7 +6,7 @@
 // @author       Illia Hilevych
 // @match        https://*.bamboohr.com/employees/timesheet/?id=*
 // @run-at document-idle
-// @updateURL    https://github.com/nimspy/bamboo/bambooTimesheetFeel.user.js
+// @updateURL    https://github.com/nimspy/bamboo/raw/main/bambooTimesheetFeel.user.js
 // ==/UserScript==
 
 const DAILY_HOURS = 8;
