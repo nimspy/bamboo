@@ -10,4 +10,4 @@ Add [bambooTimesheetFeel.user.js](https://github.com/nimspy/bamboo/raw/main/bamb
 Select a project at the bottom of the Timesheet page and click "Fill month" button.
 
 ### Donate
-You can buy me a beer =)
+You can [buy me a beer](https://send.monobank.ua/emvG6RnAH) =)
