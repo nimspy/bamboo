@@ -41,6 +41,7 @@ const DAILY_HOURS = 8;
     title.className = 'TimesheetSummary__title TimesheetSummary__title--payPeriod';
     totalData.style.color = "#686868";
     totalData.style.fontSize = "13px";
+    totalData.style.marginBottom = "20px";
     document.querySelector('.TimesheetSummary').append(title, totalData);
 
     let mh = {
