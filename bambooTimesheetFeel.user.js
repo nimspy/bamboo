@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         BambooHR Timesheet Feel
 // @namespace    com.bamboohr.clickdealer
-// @version      0.5
+// @version      0.6
 // @description  Fill BambooHR Timesheet hours
 // @author       Illia Hilevych
 // @match        https://*.bamboohr.com/employees/timesheet/?id=*
