@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         BambooHR Timesheet Feel
 // @namespace    com.bamboohr.clickdealer
-// @version      0.4.1
+// @version      0.5
 // @description  Fill BambooHR Timesheet hours
 // @author       Illia Hilevych
 // @match        https://*.bamboohr.com/employees/timesheet/?id=*
@@ -49,7 +49,6 @@ const DAILY_HOURS = 8;
         work: {},
         holidays: {}
     };
-
 
     for (const [day, details] of Object.entries(tsd.timesheet.dailyDetails)) {
         details.hourEntries.map(function(ent) {
@@ -118,7 +117,10 @@ const DAILY_HOURS = 8;
         console.log('Entries:', entries);
 
         if (confirm('Are you sure?')) {
-            jQuery.post(`${window.location.origin}/timesheet/hour/entries`, {hours: entries});
+            jQuery.post(`${window.location.origin}/timesheet/hour/entries`, {hours: entries})
+            .done(function(data) {
+                location.reload();
+            });
         } else {
             return false;
         }
