@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         BambooHR Timesheet Feel
 // @namespace    com.bamboohr.clickdealer
-// @version      0.3
+// @version      0.4
 // @description  Fill BambooHR Timesheet hours
 // @author       Illia Hilevych
 // @match        https://*.bamboohr.com/employees/timesheet/?id=*
@@ -33,6 +33,45 @@ const DAILY_HOURS = 8;
     btn.innerText = 'Fill month';
 
     document.querySelector('.TimesheetTab').append(div);
+
+    /* show total information */
+    let title = document.createElement('div');
+    let totalData = document.createElement('div');
+    title.innerText = 'Total information';
+    title.className = 'TimesheetSummary__title TimesheetSummary__title--payPeriod';
+    totalData.style.color = "#686868";
+    totalData.style.fontSize = "13px";
+    document.querySelector('.TimesheetSummary').append(title, totalData);
+
+    let mh = {
+        dayOff: {},
+        work: {},
+        holidays: {}
+    };
+
+
+    for (const [day, details] of Object.entries(tsd.timesheet.dailyDetails)) {
+        details.hourEntries.map(function(ent) {
+            if (ent.projectName) {
+                let project = ent.projectName.trim();
+                mh.work[project] = mh.work.hasOwnProperty(project) ? mh.work[project] + ent.hours : ent.hours;
+            }
+        });
+        details.timeOff.map(function(ent) {
+            let tp = ent.type.trim();
+            mh.dayOff[tp] = mh.dayOff.hasOwnProperty(tp) ? mh.dayOff[tp] + details.timeOffHours : details.timeOffHours;
+        });
+        details.holidays.map(function(ent) {
+            let name = ent.name.trim();
+            mh.holidays[name] = mh.holidays.hasOwnProperty(name) ? mh.holidays[name] + ent.paidHours : ent.paidHours;
+        });
+    }
+
+    console.log('Total info', mh);
+
+    for (const [project, hours] of Object.entries(mh.work)) {
+        totalData.insertAdjacentHTML("beforeend", `<div>${project}: ${hours} hours</div>`);
+    }
 
     btn.onclick = function() {
         let skipped = [];
