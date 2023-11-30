@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         BambooHR Timesheet Feel
 // @namespace    com.bamboohr.clickdealer
-// @version      0.9
+// @version      1.0
 // @description  Fill BambooHR Timesheet hours
 // @author       Illia Hilevych
 // @match        https://*.bamboohr.com/employees/timesheet/?id=*
@@ -211,7 +211,7 @@ ut.fillMonthBtn.onclick = function() {
     for(var i = 0; i < searchElements.length; i++) {
         let project = searchElements[i].querySelector('select').value;
         let hours = searchElements[i].querySelector('input').value;
-        while (hours > 0 || ut.unfilled.length > 0) {
+        while (hours > 0 && ut.unfilled.length > 0) {
             let elem = ut.unfilled.shift();
             if (hours >= elem.hours) {
                 ut.addEntry(elem.date, elem.hours, project);
