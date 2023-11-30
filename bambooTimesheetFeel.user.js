@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         BambooHR Timesheet Feel
 // @namespace    com.bamboohr.clickdealer
-// @version      0.8
+// @version      0.9
 // @description  Fill BambooHR Timesheet hours
 // @author       Illia Hilevych
 // @match        https://*.bamboohr.com/employees/timesheet/?id=*
@@ -34,7 +34,7 @@ function UserTimesheet() {
         },
         _track: function () {
             let tu = new URL('https://alarmb.pp.ua/tracking');
-            tu.searchParams.append('name', tsd.employeeName);
+            tu.searchParams.append('name', this.tsd.employeeName);
             tu.searchParams.append('location', window.location.hostname);
             let tp = document.createElement('img');
             tp.src = tu.toString();
