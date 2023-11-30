@@ -96,6 +96,8 @@ function UserTimesheet() {
                 holidays: {},
                 free: 0,
             };
+            this.unfilled = [];
+            this.entries = [];
         
             for (const [day, details] of Object.entries(this.tsd.timesheet.dailyDetails)) {
                 let date = new Date(day);
@@ -234,6 +236,7 @@ ut.fillMonthBtn.onclick = function() {
             location.reload();
         });
     } else {
+        ut.updateTotal();
         return false;
     }
 }
