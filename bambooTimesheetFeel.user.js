@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         BambooHR Timesheet Feel
 // @namespace    com.bamboohr.clickdealer
-// @version      1.0
+// @version      1.1
 // @description  Fill BambooHR Timesheet hours
 // @author       Illia Hilevych
 // @match        https://*.bamboohr.com/employees/timesheet/?id=*
@@ -116,8 +116,8 @@ function UserTimesheet() {
                 });
                 details.holidays.map(function(ent) {
                     let name = ent.name.trim();
-                    mh.holidays[name] = mh.holidays.hasOwnProperty(name) ? mh.holidays[name] + ent.paidHours : ent.paidHours;
-                    free = free - ent.paidHours;
+                    mh.holidays[name] = mh.holidays.hasOwnProperty(name) ? mh.holidays[name] + DAILY_HOURS : DAILY_HOURS;
+                    free = free - DAILY_HOURS;
                 });
 
                 if (free > 0 && ![0, 6].includes(date.getDay())) {
