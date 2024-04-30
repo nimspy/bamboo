@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         BambooHR Timesheet Feel
 // @namespace    com.bamboohr.clickdealer
-// @version      1.1
+// @version      1.2
 // @description  Fill BambooHR Timesheet hours
 // @author       Illia Hilevych
 // @match        https://*.bamboohr.com/employees/timesheet/?id=*
@@ -58,7 +58,9 @@ function UserTimesheet() {
             };
             const observer = new MutationObserver(callback);
             let element = document.querySelector('.TimesheetSummary__payPeriodTotal');
-            observer.observe(element, config);
+            if (element) {
+                observer.observe(element, config);
+            }
         },
         addEntry: function (day, h, p) {
             this.entries.push({
